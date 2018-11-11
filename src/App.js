@@ -1,24 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { notify } from './notify';
 
 class App extends Component {
-  state = {
-    hasContainer: false
-  };
-
-  alert = (text) => {
-    import('./notify').then(module => {
-      this.setState({ hasContainer: true })
-      module.notify(text)
-    });
-  };
-
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img onClick={() => this.alert("Hello World")} src={logo} className="App-logo" alt="logo" />
+          <img onClick={() => notify("Hello World")} src={logo} className="App-logo" alt="logo" />
           <p>
             Click on the logo
           </p>
