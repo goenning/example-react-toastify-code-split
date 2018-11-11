@@ -3,22 +3,25 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    hasContainer: false
+  };
+
+  alert = (text) => {
+    import('./notify').then(module => {
+      this.setState({ hasContainer: true })
+      module.notify(text)
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img onClick={() => this.alert("Hello World")} src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Click on the logo
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
       </div>
     );
